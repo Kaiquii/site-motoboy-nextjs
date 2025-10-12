@@ -50,30 +50,40 @@ export default function ContactForm() {
 
     const numeroWhatsapp = "5511989040195";
 
-    // Validar apenas o campo de descrição
     if (descricao.length > 300) {
       alert("Descrição muito longa. Por favor, reduza o tamanho da descrição.");
       return;
     }
 
-    // Mensagem simples com apenas os dados do formulário
     const mensagemSimples = `Solicitação de Entrega - Chama o Boy!
 
-Cliente: ${nome}
-Email: ${email}
-Serviço: ${servico}
+      *Cliente:* ${nome}
+      *Email:* ${email}
+      *Serviço:* ${servico}
 
-Retirada: ${enderecoRetirada || buscaRetirada || "Não informado"}
-Entrega: ${enderecoEntrega || buscaEntrega || "Não informado"}
+      *📍 Retirada:*
+      ${
+        enderecoRetirada
+          ? resumirEndereco(enderecoRetirada)
+          : buscaRetirada || "Não informado"
+      }
 
-Descrição: ${descricao}
+      *🎯 Entrega:*
+      ${
+        enderecoEntrega
+          ? resumirEndereco(enderecoEntrega)
+          : buscaEntrega || "Não informado"
+      }
 
-Disponível 24h`;
+      *Descrição:*
+      ${descricao}
+
+      _Disponível das 08h ás 20h_`;
 
     const mensagemCodificada = encodeURIComponent(mensagemSimples.trim());
-    const url = `https://wa.me/${numeroWhatsapp}?text=${mensagemCodificada}`;
 
-    // Debug: verificar valores dos endereços
+    const url = `https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${mensagemCodificada}`;
+
     console.log("Endereço Retirada (API):", enderecoRetirada);
     console.log("Busca Retirada (campo):", buscaRetirada);
     console.log("Endereço Entrega (API):", enderecoEntrega);
@@ -85,24 +95,18 @@ Disponível 24h`;
     console.log("Tamanho da URL:", url.length);
 
     if (typeof window !== "undefined") {
-      // Solução simples e direta
-      try {
-        window.location.href = url;
-        console.log("Redirecionando para WhatsApp");
-      } catch (error) {
-        console.error("Erro ao abrir WhatsApp:", error);
-        window.open(url, "_blank");
-      }
+      window.open(url, "_blank", "noopener,noreferrer");
+      console.log("Abrindo Whats em nova aba");
     } else {
       console.error("Window não está disponível");
     }
   };
+
   return (
     <section
       id="contato"
       className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden"
     >
-      {/* Background decorativo */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10">
         <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-500 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-32 h-32 bg-orange-500 rounded-full blur-3xl"></div>
@@ -128,7 +132,6 @@ Disponível 24h`;
           </p>
         </div>
 
-        {/* Formulário Centralizado */}
         <div className="max-w-5xl mx-auto mb-12 sm:mb-16">
           <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -188,7 +191,6 @@ Disponível 24h`;
                   <option>Outro</option>
                 </select>
               </div>
-              {/* Endereço de Retirada */}
               <div>
                 <label className="block text-sm font-semibold text-gray-200 mb-2">
                   <span className="flex items-center">
@@ -309,7 +311,6 @@ Disponível 24h`;
                 )}
               </div>
 
-              {/* Endereço de Entrega */}
               <div>
                 <label className="block text-sm font-semibold text-gray-200 mb-2">
                   <span className="flex items-center">
@@ -439,12 +440,17 @@ Disponível 24h`;
                 </label>
                 <textarea
                   id="descricao"
-                  rows={4}
+                  rows={7}
                   value={descricao}
                   required
                   onChange={(e) => setDescricao(e.target.value)}
                   className="w-full bg-gray-700/50 border border-gray-600 text-white rounded-xl p-4 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-400 resize-none"
-                  placeholder="Ex: Retirar pedido no restaurante X e entregar no endereço Y..."
+                  placeholder={`Descrição do produto:
+Quantidade de itens:
+Peso:
+Altura:
+Largura:
+Comprimento:`}
                 ></textarea>
                 <div className="flex justify-between items-center mt-2">
                   <span className="text-xs text-gray-400">
@@ -473,10 +479,8 @@ Disponível 24h`;
           </div>
         </div>
 
-        {/* Informações de Contato */}
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Informações de contato */}
             <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-white mb-6">
                 Informações de Contato
@@ -490,7 +494,9 @@ Disponível 24h`;
                   <div>
                     <h4 className="text-white font-semibold mb-1">WhatsApp</h4>
                     <p className="text-gray-300">(11) 98904-0195</p>
-                    <p className="text-sm text-gray-400">Disponível 24h</p>
+                    <p className="text-sm text-gray-400">
+                      Atendimento das 8h as 20h
+                    </p>
                   </div>
                 </div>
 
@@ -502,7 +508,9 @@ Disponível 24h`;
                     <h4 className="text-white font-semibold mb-1">
                       Área de Atendimento
                     </h4>
-                    <p className="text-gray-300">Grande São Paulo e ABCD</p>
+                    <p className="text-gray-300">
+                      Grande São Paulo, Interior e Litoral
+                    </p>
                     <p className="text-sm text-gray-400">Cobertura completa</p>
                   </div>
                 </div>
@@ -516,13 +524,12 @@ Disponível 24h`;
                       Tempo de Resposta
                     </h4>
                     <p className="text-gray-300">Resposta imediata</p>
-                    <p className="text-sm text-gray-400">Via WhatsApp</p>
+                    <p className="text-sm text-green-500">Via WhatsApp</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Benefícios */}
             <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-400/20 rounded-2xl p-8">
               <h3 className="text-xl font-bold text-white mb-4">
                 Por que escolher nossos serviços?
@@ -534,15 +541,15 @@ Disponível 24h`;
                 </li>
                 <li className="flex items-center text-gray-300">
                   <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></span>
-                  Atendimento 24 horas
+                  Atendimento ágil e disponível
                 </li>
                 <li className="flex items-center text-gray-300">
                   <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></span>
-                  Cobertura em toda Grande SP
+                  Cobertura em toda Grande SP, Litoral e Interior
                 </li>
                 <li className="flex items-center text-gray-300">
                   <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></span>
-                  Preços competitivos
+                  Custo-benefício que faz diferença
                 </li>
               </ul>
             </div>

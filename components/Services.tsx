@@ -1,41 +1,38 @@
 export default function Services() {
   const services = [
     {
-      icon: "🍽️",
-      title: "Coleta e Entrega de Comida",
+      icon: "🚚",
+      title: "Coleta e Entrega de Produtos",
       description:
-        "Retiro e entrego pedidos de restaurantes, lanchonetes e apps de delivery. Agilidade para garantir que a comida chegue quente e na hora certa.",
+        "Serviço de retirada e entrega rápida de encomendas, produtos diversos. Compromisso com a agilidade, segurança e pontualidade em cada entrega.",
       features: [
-        "Entrega rápida",
-        "Comida quente",
-        "Apps de delivery",
-        "Restaurantes",
+        "Entregas ágeis e seguras",
+        "Coleta no local combinado",
+        "Rastreamento e suporte",
+        "Atendimento para empresas e particulares",
       ],
     },
     {
       icon: "📍",
       title: "Área de Atendimento",
       description:
-        "Atuo em toda a região da Grande São Paulo e no ABCD, oferecendo cobertura completa para suas necessidades de entrega.",
+        "Atuo em toda a região da Grande São Paulo, Litoral, Interior, outros estados consulte valores, oferecendo cobertura completa para suas necessidades de entrega.",
       features: [
         "Grande SP",
         "ABCD",
-        "Santo André",
-        "São Bernardo",
-        "São Caetano",
-        "Diadema",
+        "Litoral",
+        "Interior",
       ],
     },
     {
       icon: "⚡",
-      title: "Serviço 24h",
+      title: "Serviço das 08h ás 20h",
       description:
-        "Disponibilidade total para atender suas necessidades a qualquer hora do dia ou da noite, incluindo fins de semana.",
+        "Atendimento ágil e disponível durante todo o dia para atender suas demandas com rapidez e eficiência.",
       features: [
-        "24 horas",
-        "Fins de semana",
-        "Emergências",
-        "Disponibilidade total",
+        "Seg a Sáb, das 08h às 20h",
+        "Atendimento emergencial",
+        "Compromisso com a disponibilidade",
       ],
     },
     {
@@ -57,7 +54,6 @@ export default function Services() {
       id="servicos"
       className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
     >
-      {/* Background decorativo */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-20 left-4 sm:left-10 w-24 h-24 sm:w-32 sm:h-32 bg-yellow-500 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-4 sm:right-10 w-32 h-32 sm:w-40 sm:h-40 bg-orange-500 rounded-full blur-3xl"></div>

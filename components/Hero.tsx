@@ -27,8 +27,9 @@ export default function Hero() {
 
         <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2 animate-fade-in delay-300">
           Atendimento profissional para retirada e entrega de comida na{" "}
-          <span className="text-yellow-400 font-semibold">Grande SP</span> e{" "}
-          <span className="text-yellow-400 font-semibold">ABCD</span>
+          <span className="text-yellow-400 font-semibold">Grande SP</span>,{" "}
+          <span className="text-yellow-400 font-semibold">Interior</span> e{" "}
+          <span className="text-yellow-400 font-semibold">Litoral</span>
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-fade-in delay-500 px-2">
@@ -54,11 +55,11 @@ export default function Hero() {
             <div className="text-gray-400 text-sm">Segurança</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-yellow-400">24h</div>
+            <div className="text-3xl font-bold text-yellow-400">8h às 20h</div>
             <div className="text-gray-400 text-sm">Disponível</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-yellow-400">+500</div>
+            <div className="text-3xl font-bold text-yellow-400">+1000</div>
             <div className="text-gray-400 text-sm">Entregas</div>
           </div>
         </div>

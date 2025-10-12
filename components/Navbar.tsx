@@ -25,7 +25,6 @@ export default function Navbar() {
     >
       <nav className="container mx-auto px-3 sm:px-4 py-2 sm:py-3">
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <div className="text-white font-bold text-base sm:text-lg md:text-xl lg:text-2xl">
             <Link href="/" className="flex items-center group">
               <span className="whitespace-nowrap group-hover:text-yellow-400 transition-colors duration-300">
@@ -46,7 +45,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-8 items-center">
             <a
               href="#home"
@@ -70,7 +68,6 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden text-white hover:text-yellow-400 transition-colors duration-300 p-2"
@@ -100,7 +97,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={`lg:hidden transition-all duration-300 overflow-hidden ${
             isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"

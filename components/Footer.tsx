@@ -2,7 +2,6 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-gradient-to-r from-gray-900 via-gray-800 to-black border-t border-yellow-400/20 relative overflow-hidden">
-      {/* Background decorativo */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-0 left-1/4 w-32 h-32 bg-yellow-500 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-orange-500 rounded-full blur-2xl"></div>
@@ -10,7 +9,6 @@ export default function Footer() {
 
       <div className="container mx-auto px-3 sm:px-4 py-8 sm:py-12 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
-          {/* Logo e descrição */}
           <div className="text-center sm:text-left sm:col-span-2 lg:col-span-1">
             <div className="text-white font-bold text-xl sm:text-2xl mb-3 sm:mb-4">
               <span className="text-white">Chama</span>
@@ -26,7 +24,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Links rápidos */}
           <div className="text-center sm:text-left">
             <h3 className="text-white font-bold text-base sm:text-lg mb-3 sm:mb-4">
               Links Rápidos
@@ -59,7 +56,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contato */}
           <div className="text-center sm:text-left">
             <h3 className="text-white font-bold text-base sm:text-lg mb-3 sm:mb-4">
               Contato
@@ -81,7 +77,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Linha divisória */}
         <div className="border-t border-gray-700 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
             <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
